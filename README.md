@@ -1,77 +1,85 @@
-# Machine Learning Web Projects
+# Machine-Learning-Web - Ghibli Food Recipe Platform
 
-This directory contains machine learning components for web applications.
+A comprehensive machine learning recommendation system providing intelligent book suggestions, enhanced search capabilities, and user behavior analysis for the Ghibli Food Recipe application ecosystem.
 
 ## Table of Contents
-- [Ghibli-Food-ML Overview](#ghibli-food-ml)
+
+- [Overview](#overview)
+- [Features](#features)
 - [Project Integration](#project-integration)
 - [Quick Setup Guide](#quick-setup-guide)
-- [API Endpoints](#api-endpoints)
-- [Machine Learning Models](#machine-learning-models)
+- [Technology Stack](#technology-stack)
+- [API Documentation](#api-documentation)
+- [Configuration](#configuration)
 - [Integration Examples](#integration-examples)
+- [Development](#development)
+- [Contributing](#contributing)
 
 ---
 
-## Projects
+## Overview
 
-### Ghibli-Food-ML
-A comprehensive machine learning recommendation system for the Ghibli Food Recipe application.
+The **Machine-Learning-Web** component serves as the intelligent recommendation engine for the entire Ghibli Food Recipe platform, providing AI-powered book recommendations, enhanced search capabilities, and user behavior analysis. This service uses advanced machine learning algorithms to deliver personalized experiences and improve user engagement through data-driven insights.
 
-**Core Features:**
-- **Content-Based Filtering**: TF-IDF vectorization and cosine similarity for book features
-- **Collaborative Filtering**: Matrix factorization (SVD) for user-item interactions
-- **Hybrid Recommendation**: Combines content and collaborative approaches
-- **Real-time API**: FastAPI service with automatic documentation
-- **Model Training**: Continuous learning from user interactions
-- **Smart Search**: Enhanced search with semantic similarity
-- **Behavioral Analysis**: User pattern recognition and preference learning
-
-**Advanced Features:**
-- **Cold Start Problem**: Handling new users and books with no interaction history
-- **Scalable Architecture**: Designed for high-throughput recommendation serving
-- **A/B Testing**: Framework for testing different recommendation algorithms
-- **Model Monitoring**: Performance tracking and model drift detection
-- **Feature Engineering**: Automated extraction of book and user features
+This solution includes content-based and collaborative filtering algorithms, hybrid recommendation systems, real-time model training, behavioral pattern recognition, and scalable FastAPI architecture optimized for high-throughput recommendation serving.
 
 ---
 
-## 🔗 Project Integration
+## Features
 
-This ML service acts as the intelligence layer of the Ghibli Food Recipe platform:
+### Core Features
+- **Hybrid Recommendation System** - Combines content-based and collaborative filtering for optimal accuracy
+- **Real-time API Service** - FastAPI-based service with automatic OpenAPI documentation
+- **Smart Search Enhancement** - Semantic similarity and relevance scoring for improved search results
+- **User Behavior Analysis** - Pattern recognition and preference learning from user interactions
+- **Scalable Architecture** - Designed for high-throughput recommendation serving with caching
 
-### 🔧 Backend API Integration (Back-End-Web)
-- **Recommendation Endpoint**: Serves personalized book recommendations
-- **Behavioral Tracking**: Receives user interaction data for model training
-- **Search Enhancement**: Provides semantic search capabilities
-- **Real-time Updates**: Processes new books and users immediately
-
-### 🎨 Frontend Integration (Front-End-Web)
-- **Smart Recommendations**: Powers the recommendation sections
-- **Enhanced Search**: Improves search results with ML-driven relevance
-- **User Behavior**: Tracks interactions for continuous learning
-- **Personalization**: Adapts interface based on user preferences
-
-### 🗄️ Database Integration (Database-Web)
-- **Feature Storage**: Caches computed features for fast recommendations
-- **Model Persistence**: Stores trained models and user profiles
-- **Analytics Data**: Accesses user interaction history and book metadata
-- **Performance Metrics**: Logs recommendation accuracy and user feedback
-
-### 🚀 DevOps Integration (DevOps-Web)
-- **Container Deployment**: Docker-ready with health checks
-- **Model Versioning**: MLOps pipeline for model deployment
-- **Monitoring**: Performance and accuracy metrics collection
-- **Auto-scaling**: Kubernetes horizontal scaling based on load
+### Advanced Features
+- **Cold Start Problem Solution** - Handles new users and books with no interaction history
+- **A/B Testing Framework** - Support for testing different recommendation algorithms
+- **Model Monitoring** - Performance tracking, accuracy metrics, and model drift detection
+- **Feature Engineering** - Automated extraction and processing of book and user features
+- **Continuous Learning** - Real-time model updates based on user feedback and interactions
 
 ---
 
-## 🚀 Quick Setup Guide
+## Project Integration
+
+This ML service acts as the intelligence layer for the entire Ghibli Food Recipe platform:
+
+### 🔧 **Backend Integration** (Back-End-Web)
+- **Recommendation API** - Provides personalized book recommendations via REST endpoints
+- **Behavioral Data Pipeline** - Receives and processes user interaction data for model training
+- **Search Enhancement** - Integrates with backend search to provide ML-powered relevance scoring
+- **Real-time Processing** - Handles new books and users immediately for instant recommendations
+
+### 🎨 **Frontend Integration** (Front-End-Web)
+- **Recommendation Widgets** - Powers recommendation sections with personalized content
+- **Smart Search Interface** - Enhances search results with ML-driven relevance and suggestions
+- **User Experience Optimization** - Adapts interface elements based on user preference patterns
+- **Behavioral Tracking Integration** - Seamlessly captures user interactions for model improvement
+
+### 🗄️ **Database Integration** (Database-Web)
+- **Feature Storage** - Caches computed features and embeddings for fast recommendation serving
+- **Model Persistence** - Stores trained models, user profiles, and recommendation histories
+- **Analytics Integration** - Accesses user interaction history and book metadata for training
+- **Performance Metrics** - Logs recommendation accuracy, user feedback, and system performance
+
+### 🚀 **DevOps Integration** (DevOps-Web)
+- **Container Deployment** - Docker-ready with health checks and resource monitoring
+- **MLOps Pipeline** - Automated model training, validation, and deployment workflows
+- **Monitoring Integration** - Prometheus metrics collection and Grafana visualization
+- **Auto-scaling Support** - Kubernetes HPA integration for handling variable ML workloads
+
+---
+
+## Quick Setup Guide
 
 ### Prerequisites
-- **Python 3.11+** with pip
-- **PostgreSQL** (for data access)
-- **Redis** (for caching - optional)
-- **Docker** (for containerization)
+- **Python 3.11+** with pip and virtual environment support
+- **PostgreSQL** database (shared with other services)
+- **Redis** (optional, for caching and performance optimization)
+- **Docker** (optional, for containerized deployment)
 
 ### Local Development Setup
 
@@ -79,11 +87,15 @@ This ML service acts as the intelligence layer of the Ghibli Food Recipe platfor
    ```bash
    cd Machine-Learnimg-Web/Ghibli-Food-ML
    python -m venv venv
+   
+   # Activate virtual environment
    source venv/bin/activate  # On Windows: venv\Scripts\activate
+   
+   # Install dependencies
    pip install -r requirements.txt
    ```
 
-2. **Configuration**
+2. **Environment Configuration**
    ```bash
    cp .env.example .env
    ```
@@ -94,87 +106,155 @@ This ML service acts as the intelligence layer of the Ghibli Food Recipe platfor
    API_HOST=0.0.0.0
    API_PORT=8001
    
-   # Database Connection (matches Database-Web)
+   # Database Connection
    DATABASE_URL=postgresql://ghibli_api_user:password@localhost:5432/ghibli_food_db
    
    # Backend API Integration
    BACKEND_API_URL=http://localhost:5000/api/v1
    
-   # Redis Cache (optional)
+   # Redis Cache
    REDIS_URL=redis://localhost:6379/0
    
-   # Model Configuration
-   MODEL_UPDATE_INTERVAL=3600  # Update models every hour
-   RECOMMENDATION_CACHE_TTL=1800  # Cache for 30 minutes
+   # ML Model Configuration
+   MODEL_UPDATE_INTERVAL=3600
+   RECOMMENDATION_CACHE_TTL=1800
+   FEATURE_VECTOR_SIZE=100
    
-   # Feature Engineering
+   # Training Parameters
    MIN_INTERACTIONS_PER_USER=5
    MIN_INTERACTIONS_PER_BOOK=3
-   FEATURE_VECTOR_SIZE=100
+   COLLABORATIVE_FACTORS=50
+   CONTENT_WEIGHT=0.4
+   COLLABORATIVE_WEIGHT=0.6
    ```
 
-3. **Start the Service**
+3. **Start the ML Service**
    ```bash
    python src/main.py
    ```
    
    Access the API documentation at: `http://localhost:8001/docs`
 
-### Integrated Development (Full Stack)
+4. **Verify Installation**
+   ```bash
+   # Health check
+   curl http://localhost:8001/health
+   
+   # Model status
+   curl http://localhost:8001/models/status
+   ```
 
-Start all services together:
-```bash
-# Terminal 1: Database
-cd Database-Web/Ghibli-Food-Database
-npm run dev
+### Integrated Development Setup
 
-# Terminal 2: Backend API
-cd Back-End-Web/Ghibli-Food-Receipt-API
-npm run dev
-
-# Terminal 3: ML Service
-cd Machine-Learnimg-Web/Ghibli-Food-ML
-python src/main.py
-
-# Terminal 4: Frontend
-cd Front-End-Web/Ghibli-Food-Receipt
-npm run dev
-```
+1. **Start All Services**
+   ```bash
+   # Terminal 1: Database
+   cd Database-Web/Ghibli-Food-Database
+   npm run dev
+   
+   # Terminal 2: Backend API  
+   cd Back-End-Web/Ghibli-Food-Receipt-API
+   npm run dev
+   
+   # Terminal 3: ML Service
+   cd Machine-Learnimg-Web/Ghibli-Food-ML
+   python src/main.py
+   
+   # Terminal 4: Frontend
+   cd Front-End-Web/Ghibli-Food-Receipt
+   npm run dev
+   ```
 
 ### Docker Integration
-
-Using the integrated Docker setup:
 ```bash
+# Using integrated Docker setup
 cd DevOps-Web/Ghibli-Food-DevOps
-docker-compose up -d
+docker-compose up -d ml-service
 ```
-
-The ML service will be available at `http://localhost:8001`
 
 ---
 
-## 🔌 API Endpoints
+## Technology Stack
+
+| Technology | Version | Purpose |
+|------------|---------|---------|
+| **Python** | 3.11+ | Core programming language |
+| **FastAPI** | 0.104+ | High-performance web framework |
+| **scikit-learn** | 1.3+ | Machine learning algorithms |
+| **pandas** | 2.0+ | Data manipulation and analysis |
+| **numpy** | 1.24+ | Numerical computing |
+| **SQLAlchemy** | 2.0+ | Database ORM |
+
+### Machine Learning Libraries
+| Technology | Purpose |
+|------------|---------|
+| **scikit-learn** | ML algorithms (SVD, TF-IDF, clustering) |
+| **surprise** | Collaborative filtering algorithms |
+| **sentence-transformers** | Semantic text embeddings |
+| **joblib** | Model serialization and parallel processing |
+
+### Data & Infrastructure
+| Technology | Purpose |
+|------------|---------|
+| **PostgreSQL** | Primary data storage |
+| **Redis** | Caching and session storage |
+| **uvicorn** | ASGI server for FastAPI |
+| **pydantic** | Data validation and serialization |
+
+### Development & Testing
+| Technology | Purpose |
+|------------|---------|
+| **pytest** | Testing framework |
+| **black** | Code formatting |
+| **flake8** | Code linting |
+| **mypy** | Static type checking |
+
+---
+
+## API Documentation
 
 ### Recommendation Endpoints
 
 **POST** `/recommend` - Get personalized recommendations
 ```json
+Request:
 {
   "user_id": "uuid",
   "num_recommendations": 10,
   "preferences": {
     "genres": ["cookbook", "asian"],
-    "difficulty": "intermediate",
+    "difficulty": "intermediate", 
     "exclude_read": true
   }
+}
+
+Response:
+{
+  "recommendations": [
+    {
+      "book_id": "uuid",
+      "title": "Book Title",
+      "score": 0.85,
+      "reason": "Based on your interest in Asian cuisine"
+    }
+  ],
+  "algorithm_used": "hybrid",
+  "cache_hit": false
 }
 ```
 
 **GET** `/similar/{book_id}` - Get similar books
 ```json
+Response:
 {
-  "book_id": "uuid",
-  "limit": 5
+  "similar_books": [
+    {
+      "book_id": "uuid",
+      "title": "Similar Book",
+      "similarity_score": 0.92,
+      "common_features": ["genre", "author_style"]
+    }
+  ]
 }
 ```
 
@@ -182,6 +262,7 @@ The ML service will be available at `http://localhost:8001`
 
 **POST** `/search` - Enhanced semantic search
 ```json
+Request:
 {
   "query": "quick pasta recipes",
   "filters": {
@@ -190,13 +271,31 @@ The ML service will be available at `http://localhost:8001`
   },
   "limit": 20
 }
+
+Response:
+{
+  "results": [
+    {
+      "book_id": "uuid",
+      "title": "Italian Pasta Mastery",
+      "relevance_score": 0.95,
+      "matched_terms": ["pasta", "quick", "recipes"]
+    }
+  ],
+  "total_results": 45,
+  "search_time_ms": 23
+}
 ```
 
 **GET** `/search/suggestions` - Auto-complete suggestions
 ```json
+Response:
 {
-  "query": "chic",
-  "limit": 10
+  "suggestions": [
+    "chicken curry recipes",
+    "chicken soup cookbook", 
+    "chicken cooking techniques"
+  ]
 }
 ```
 
@@ -204,24 +303,31 @@ The ML service will be available at `http://localhost:8001`
 
 **POST** `/behavior` - Track user behavior
 ```json
+Request:
 {
   "user_id": "uuid",
   "book_id": "uuid",
   "action": "view|rate|add_to_library|purchase",
   "metadata": {
     "rating": 5,
-    "time_spent": 120
+    "time_spent": 120,
+    "page_views": 3
   },
   "timestamp": "2024-01-01T00:00:00Z"
 }
 ```
 
-**GET** `/analytics/user/{user_id}` - User analytics
+**GET** `/analytics/user/{user_id}` - User analytics and insights
 ```json
+Response:
 {
   "user_profile": {
-    "preferences": {},
-    "behavior_patterns": {},
+    "preferred_genres": ["asian", "vegetarian"],
+    "avg_rating_given": 4.2,
+    "behavior_patterns": {
+      "most_active_time": "evening",
+      "preferred_difficulty": "intermediate"
+    },
     "recommendation_accuracy": 0.85
   }
 }
@@ -230,325 +336,468 @@ The ML service will be available at `http://localhost:8001`
 ### Model Management Endpoints
 
 **POST** `/models/train` - Trigger model retraining
-**GET** `/models/status` - Model status and metrics
-**GET** `/health` - Service health check
+**GET** `/models/status` - Model performance and health metrics
+**GET** `/health` - Service health check and system status
 
 ---
 
-## 🤖 Machine Learning Models
+## Configuration
 
-### Content-Based Filtering
+### Environment Variables
 
-**TF-IDF Vectorization**
+```env
+# API Server Configuration
+API_HOST=0.0.0.0
+API_PORT=8001
+API_WORKERS=4
+
+# Database Configuration
+DATABASE_URL=postgresql://ghibli_api_user:password@localhost:5432/ghibli_food_db
+DB_POOL_SIZE=10
+DB_POOL_OVERFLOW=20
+
+# Cache Configuration  
+REDIS_URL=redis://localhost:6379/0
+CACHE_TTL_RECOMMENDATIONS=1800
+CACHE_TTL_FEATURES=3600
+
+# ML Model Parameters
+MODEL_UPDATE_INTERVAL=3600
+RECOMMENDATION_BATCH_SIZE=1000
+FEATURE_VECTOR_SIZE=100
+MIN_INTERACTIONS_PER_USER=5
+MIN_INTERACTIONS_PER_BOOK=3
+
+# Collaborative Filtering
+COLLABORATIVE_FACTORS=50
+COLLABORATIVE_ITERATIONS=20
+COLLABORATIVE_REGULARIZATION=0.02
+
+# Content-Based Filtering
+TFIDF_MAX_FEATURES=10000
+TFIDF_NGRAM_RANGE_MIN=1
+TFIDF_NGRAM_RANGE_MAX=2
+
+# Hybrid Model Weights
+CONTENT_WEIGHT=0.4
+COLLABORATIVE_WEIGHT=0.6
+POPULARITY_WEIGHT=0.1
+
+# Performance Tuning
+SIMILARITY_CACHE_SIZE=10000
+MODEL_CACHE_SIZE=5
+ENABLE_PARALLEL_PROCESSING=true
+MAX_WORKERS=4
+
+# Monitoring and Logging
+LOG_LEVEL=INFO
+ENABLE_METRICS=true
+METRICS_PORT=8002
+```
+
+### Model Configuration
 ```python
+# config/models.py
+MODEL_CONFIG = {
+    "collaborative_filtering": {
+        "algorithm": "SVD",
+        "n_factors": 50,
+        "n_epochs": 20,
+        "lr_all": 0.005,
+        "reg_all": 0.02
+    },
+    "content_based": {
+        "tfidf_max_features": 10000,
+        "ngram_range": (1, 2),
+        "stop_words": "english",
+        "min_df": 2,
+        "max_df": 0.95
+    },
+    "hybrid": {
+        "content_weight": 0.4,
+        "collaborative_weight": 0.6,
+        "popularity_weight": 0.1
+    }
+}
+```
+
+---
+
+## Integration Examples
+
+### Recommendation Service
+```python
+# services/recommendation_service.py
+from typing import List, Dict, Any
+import numpy as np
 from sklearn.feature_extraction.text import TfidfVectorizer
 from sklearn.metrics.pairwise import cosine_similarity
 
+class RecommendationService:
+    def __init__(self):
+        self.content_recommender = ContentBasedRecommender()
+        self.collaborative_recommender = CollaborativeRecommender()
+        self.hybrid_recommender = HybridRecommender()
+    
+    async def get_recommendations(
+        self, 
+        user_id: str, 
+        num_recommendations: int = 10,
+        preferences: Dict[str, Any] = None
+    ) -> List[Dict[str, Any]]:
+        """Get personalized recommendations for a user."""
+        
+        # Check cache first
+        cache_key = f"recommendations:{user_id}:{hash(str(preferences))}"
+        cached_recommendations = await self.cache.get(cache_key)
+        
+        if cached_recommendations:
+            return cached_recommendations
+        
+        # Get user interaction history
+        user_interactions = await self.get_user_interactions(user_id)
+        
+        # Choose recommendation strategy based on data availability
+        if len(user_interactions) < 5:
+            # Cold start: use content-based + popularity
+            recommendations = await self.handle_cold_start(
+                user_id, preferences, num_recommendations
+            )
+        else:
+            # Use hybrid approach
+            recommendations = await self.hybrid_recommender.recommend(
+                user_id, num_recommendations, preferences
+            )
+        
+        # Cache results
+        await self.cache.set(cache_key, recommendations, ttl=1800)
+        
+        return recommendations
+
 class ContentBasedRecommender:
     def __init__(self):
-        self.tfidf = TfidfVectorizer(
+        self.tfidf_vectorizer = TfidfVectorizer(
             max_features=10000,
             stop_words='english',
             ngram_range=(1, 2)
         )
-        self.book_features = None
-        self.book_similarity_matrix = None
+        self.feature_matrix = None
+        self.similarity_matrix = None
     
-    def fit(self, books_df):
-        # Combine title, description, ingredients, and genre
-        content = books_df['title'] + ' ' + books_df['description'] + ' ' + \
-                 books_df['genre'] + ' ' + books_df['ingredients'].str.join(' ')
+    async def train(self, books_df):
+        """Train content-based model on book features."""
+        # Combine textual features
+        content_features = (
+            books_df['title'].fillna('') + ' ' +
+            books_df['description'].fillna('') + ' ' +
+            books_df['genre'].fillna('') + ' ' +
+            books_df['ingredients'].apply(lambda x: ' '.join(x) if x else '')
+        )
         
-        self.book_features = self.tfidf.fit_transform(content)
-        self.book_similarity_matrix = cosine_similarity(self.book_features)
+        # Create TF-IDF features
+        self.feature_matrix = self.tfidf_vectorizer.fit_transform(content_features)
+        self.similarity_matrix = cosine_similarity(self.feature_matrix)
         
-    def get_similar_books(self, book_id, n_recommendations=10):
-        book_idx = self.book_id_to_index[book_id]
-        similarity_scores = self.book_similarity_matrix[book_idx]
-        similar_indices = similarity_scores.argsort()[-n_recommendations-1:-1][::-1]
-        return [self.index_to_book_id[idx] for idx in similar_indices]
-```
-
-### Collaborative Filtering
-
-**Matrix Factorization with SVD**
-```python
-from sklearn.decomposition import TruncatedSVD
-from scipy.sparse import csr_matrix
-
-class CollaborativeFilteringRecommender:
-    def __init__(self, n_components=100):
-        self.svd = TruncatedSVD(n_components=n_components, random_state=42)
-        self.user_item_matrix = None
-        self.user_factors = None
-        self.item_factors = None
+        logger.info(f"Content-based model trained with {len(books_df)} books")
     
-    def fit(self, interactions_df):
-        # Create user-item interaction matrix
-        self.user_item_matrix = self._create_interaction_matrix(interactions_df)
+    async def get_similar_books(self, book_id: str, limit: int = 10):
+        """Get books similar to the given book."""
+        book_idx = self.book_id_to_index.get(book_id)
+        if book_idx is None:
+            return []
         
-        # Fit SVD model
-        self.user_factors = self.svd.fit_transform(self.user_item_matrix)
-        self.item_factors = self.svd.components_.T
-    
-    def get_user_recommendations(self, user_id, n_recommendations=10):
-        user_idx = self.user_id_to_index[user_id]
-        user_vector = self.user_factors[user_idx]
+        similarity_scores = self.similarity_matrix[book_idx]
+        similar_indices = similarity_scores.argsort()[-limit-1:-1][::-1]
         
-        # Calculate scores for all items
-        scores = np.dot(user_vector, self.item_factors.T)
-        
-        # Get top recommendations (excluding already interacted items)
-        already_interacted = set(self.user_item_matrix[user_idx].nonzero()[1])
         recommendations = []
+        for idx in similar_indices:
+            if idx != book_idx:
+                recommendations.append({
+                    'book_id': self.index_to_book_id[idx],
+                    'similarity_score': float(similarity_scores[idx]),
+                    'algorithm': 'content_based'
+                })
         
-        for item_idx in scores.argsort()[::-1]:
-            if item_idx not in already_interacted and len(recommendations) < n_recommendations:
-                recommendations.append(self.index_to_book_id[item_idx])
-                
         return recommendations
 ```
 
-### Hybrid Recommendation System
-
-**Weighted Combination Approach**
+### User Behavior Tracking
 ```python
-class HybridRecommender:
-    def __init__(self, content_weight=0.4, collaborative_weight=0.6):
-        self.content_recommender = ContentBasedRecommender()
-        self.collaborative_recommender = CollaborativeFilteringRecommender()
-        self.content_weight = content_weight
-        self.collaborative_weight = collaborative_weight
+# services/behavior_service.py
+from datetime import datetime
+from typing import Dict, Any
+
+class BehaviorTrackingService:
+    def __init__(self, db_session, ml_service):
+        self.db = db_session
+        self.ml_service = ml_service
     
-    def get_recommendations(self, user_id, n_recommendations=10):
-        # Get recommendations from both models
-        content_recs = self.content_recommender.get_recommendations_for_user(user_id)
-        collab_recs = self.collaborative_recommender.get_user_recommendations(user_id)
+    async def track_behavior(
+        self, 
+        user_id: str, 
+        book_id: str, 
+        action: str, 
+        metadata: Dict[str, Any] = None
+    ):
+        """Track user behavior and update ML models."""
         
-        # Combine scores using weighted approach
-        combined_scores = {}
+        # Store interaction in database
+        interaction = UserInteraction(
+            user_id=user_id,
+            book_id=book_id,
+            action=action,
+            metadata=metadata or {},
+            timestamp=datetime.utcnow()
+        )
         
-        for book_id, score in content_recs.items():
-            combined_scores[book_id] = score * self.content_weight
-            
-        for book_id, score in collab_recs.items():
-            if book_id in combined_scores:
-                combined_scores[book_id] += score * self.collaborative_weight
-            else:
-                combined_scores[book_id] = score * self.collaborative_weight
+        self.db.add(interaction)
+        await self.db.commit()
         
-        # Return top N recommendations
-        sorted_recs = sorted(combined_scores.items(), key=lambda x: x[1], reverse=True)
-        return [book_id for book_id, _ in sorted_recs[:n_recommendations]]
+        # Update user profile
+        await self.update_user_profile(user_id, action, metadata)
+        
+        # Trigger incremental model update
+        if action in ['rate', 'add_to_library', 'purchase']:
+            await self.ml_service.update_user_factors(user_id, book_id, action, metadata)
+        
+        # Invalidate recommendation cache
+        await self.invalidate_user_cache(user_id)
+    
+    async def update_user_profile(self, user_id: str, action: str, metadata: Dict[str, Any]):
+        """Update user profile based on behavior."""
+        user_profile = await self.get_or_create_user_profile(user_id)
+        
+        # Update interaction counts
+        user_profile.total_interactions += 1
+        user_profile.action_counts[action] = user_profile.action_counts.get(action, 0) + 1
+        
+        # Update preferences based on action
+        if action == 'rate' and metadata.get('rating'):
+            rating = metadata['rating']
+            user_profile.average_rating = (
+                (user_profile.average_rating * user_profile.rating_count + rating) /
+                (user_profile.rating_count + 1)
+            )
+            user_profile.rating_count += 1
+        
+        # Update time-based patterns
+        current_hour = datetime.utcnow().hour
+        user_profile.active_hours[current_hour] = user_profile.active_hours.get(current_hour, 0) + 1
+        
+        await self.db.commit()
+
+class RealtimeModelUpdater:
+    def __init__(self):
+        self.update_queue = asyncio.Queue()
+        self.batch_size = 100
+        self.update_interval = 300  # 5 minutes
+    
+    async def start_update_worker(self):
+        """Background worker for model updates."""
+        while True:
+            try:
+                # Collect batch of updates
+                updates = []
+                for _ in range(self.batch_size):
+                    try:
+                        update = await asyncio.wait_for(
+                            self.update_queue.get(), timeout=self.update_interval
+                        )
+                        updates.append(update)
+                    except asyncio.TimeoutError:
+                        break
+                
+                if updates:
+                    await self.process_batch_update(updates)
+                    
+            except Exception as e:
+                logger.error(f"Model update worker error: {e}")
+                await asyncio.sleep(60)  # Wait before retry
+    
+    async def process_batch_update(self, updates: List[Dict[str, Any]]):
+        """Process a batch of model updates."""
+        logger.info(f"Processing batch update with {len(updates)} interactions")
+        
+        # Group updates by user
+        user_updates = {}
+        for update in updates:
+            user_id = update['user_id']
+            if user_id not in user_updates:
+                user_updates[user_id] = []
+            user_updates[user_id].append(update)
+        
+        # Update collaborative filtering model
+        for user_id, user_interactions in user_updates.items():
+            await self.update_user_embeddings(user_id, user_interactions)
+        
+        # Update content-based features if new books
+        new_books = [u for u in updates if u.get('new_book')]
+        if new_books:
+            await self.update_content_features(new_books)
 ```
 
-### Cold Start Handling
-
-**New User Recommendations**
+### Performance Monitoring
 ```python
-class ColdStartHandler:
-    def get_new_user_recommendations(self, user_preferences, n_recommendations=10):
-        # Use popularity-based and content-based recommendations
-        popular_books = self._get_popular_books_by_genre(user_preferences.get('genres', []))
-        
-        if user_preferences.get('sample_ratings'):
-            # Use sample ratings to find similar users
-            similar_users = self._find_similar_users_by_sample_ratings(
-                user_preferences['sample_ratings']
-            )
-            similar_user_books = self._get_books_liked_by_users(similar_users)
-            return self._combine_recommendations(popular_books, similar_user_books)
-        
-        return popular_books[:n_recommendations]
+# monitoring/metrics.py
+from prometheus_client import Counter, Histogram, Gauge
+import time
+from functools import wraps
+
+# Metrics
+RECOMMENDATION_REQUESTS = Counter('ml_recommendation_requests_total', 'Total recommendation requests')
+RECOMMENDATION_LATENCY = Histogram('ml_recommendation_duration_seconds', 'Recommendation request duration')
+MODEL_ACCURACY = Gauge('ml_model_accuracy', 'Model accuracy score')
+CACHE_HIT_RATE = Counter('ml_cache_hits_total', 'Cache hits')
+
+def monitor_performance(func):
+    """Decorator to monitor function performance."""
+    @wraps(func)
+    async def wrapper(*args, **kwargs):
+        start_time = time.time()
+        try:
+            result = await func(*args, **kwargs)
+            RECOMMENDATION_REQUESTS.inc()
+            return result
+        finally:
+            RECOMMENDATION_LATENCY.observe(time.time() - start_time)
+    return wrapper
+
+class ModelPerformanceMonitor:
+    def __init__(self):
+        self.accuracy_history = []
+        self.precision_history = []
+        self.recall_history = []
     
-    def get_new_book_recommendations(self, book_metadata):
-        # Use content-based similarity with existing books
-        similar_books = self.content_recommender.find_similar_by_metadata(book_metadata)
-        return similar_books
+    async def evaluate_model_performance(self):
+        """Evaluate and log model performance metrics."""
+        # Get test interactions
+        test_interactions = await self.get_test_interactions()
+        
+        # Calculate metrics
+        accuracy = await self.calculate_accuracy(test_interactions)
+        precision = await self.calculate_precision_at_k(test_interactions, k=10)
+        recall = await self.calculate_recall_at_k(test_interactions, k=10)
+        
+        # Update metrics
+        MODEL_ACCURACY.set(accuracy)
+        
+        # Log to history
+        self.accuracy_history.append(accuracy)
+        self.precision_history.append(precision)
+        self.recall_history.append(recall)
+        
+        # Alert if performance drops
+        if len(self.accuracy_history) > 5:
+            recent_avg = sum(self.accuracy_history[-5:]) / 5
+            if recent_avg < 0.7:  # Threshold
+                await self.send_performance_alert(recent_avg)
+        
+        logger.info(f"Model performance - Accuracy: {accuracy:.3f}, Precision@10: {precision:.3f}, Recall@10: {recall:.3f}")
 ```
 
 ---
 
-## 🔌 Integration Examples
+## Development
 
-### Backend API Integration
+### Development Scripts
+```bash
+# Environment setup
+python -m venv venv             # Create virtual environment
+source venv/bin/activate        # Activate (Linux/Mac)
+pip install -r requirements.txt # Install dependencies
 
-**Recommendation Service Integration**
+# Development server
+python src/main.py              # Start FastAPI server
+uvicorn main:app --reload       # Auto-reload on changes
+uvicorn main:app --workers 4    # Multi-worker setup
+
+# Model training and evaluation
+python scripts/train_models.py  # Train all models
+python scripts/evaluate_models.py # Evaluate performance
+python scripts/update_features.py # Update feature cache
+
+# Testing
+pytest                          # Run all tests
+pytest -v tests/test_api.py     # Verbose API tests
+pytest --cov=src tests/         # Coverage report
+pytest -k "recommendation"      # Run specific tests
+
+# Code quality
+black src/                      # Format code
+flake8 src/                     # Lint code
+mypy src/                       # Type checking
+isort src/                      # Sort imports
+```
+
+### Testing Strategy
+- **Unit Tests**: Individual ML algorithm and utility function testing
+- **Integration Tests**: API endpoint testing with database integration
+- **Model Tests**: Algorithm accuracy and performance validation
+- **Load Tests**: High-throughput recommendation serving testing
+- **A/B Tests**: Comparative algorithm performance testing
+
+### Model Development Workflow
 ```python
-# In backend API (Node.js/Express)
-const axios = require('axios')
-
-class MLService {
-    constructor() {
-        this.baseURL = process.env.ML_SERVICE_URL || 'http://localhost:8001'
-    }
+# Example model training pipeline
+async def train_recommendation_models():
+    """Complete model training pipeline."""
     
-    async getRecommendations(userId, preferences = {}) {
-        try {
-            const response = await axios.post(`${this.baseURL}/recommend`, {
-                user_id: userId,
-                preferences,
-                num_recommendations: 10
-            })
-            
-            return response.data
-        } catch (error) {
-            console.error('ML service error:', error)
-            return { recommendations: [], fallback: true }
-        }
-    }
+    # 1. Data extraction
+    interactions_df = await extract_user_interactions()
+    books_df = await extract_book_features()
     
-    async trackBehavior(userId, bookId, action, metadata = {}) {
-        try {
-            await axios.post(`${this.baseURL}/behavior`, {
-                user_id: userId,
-                book_id: bookId,
-                action,
-                metadata,
-                timestamp: new Date().toISOString()
-            })
-        } catch (error) {
-            console.error('Failed to track behavior:', error)
-        }
-    }
+    # 2. Data preprocessing
+    interactions_df = preprocess_interactions(interactions_df)
+    books_df = preprocess_book_features(books_df)
     
-    async searchBooks(query, filters = {}) {
-        try {
-            const response = await axios.post(`${this.baseURL}/search`, {
-                query,
-                filters
-            })
-            
-            return response.data
-        } catch (error) {
-            console.error('Search service error:', error)
-            return { results: [], fallback: true }
-        }
-    }
-}
-
-module.exports = new MLService()
+    # 3. Train models
+    content_model = await train_content_based_model(books_df)
+    collab_model = await train_collaborative_model(interactions_df)
+    
+    # 4. Evaluate models
+    content_metrics = await evaluate_content_model(content_model)
+    collab_metrics = await evaluate_collaborative_model(collab_model)
+    
+    # 5. Create hybrid model
+    hybrid_model = create_hybrid_model(content_model, collab_model)
+    hybrid_metrics = await evaluate_hybrid_model(hybrid_model)
+    
+    # 6. Model deployment
+    if hybrid_metrics['accuracy'] > 0.75:
+        await deploy_model(hybrid_model)
+        logger.info(f"Model deployed with accuracy: {hybrid_metrics['accuracy']}")
+    else:
+        logger.warning(f"Model accuracy too low: {hybrid_metrics['accuracy']}")
 ```
 
-### Real-time Model Updates
-
-**Continuous Learning Pipeline**
-```python
-import asyncio
-from datetime import datetime, timedelta
-
-class ModelUpdateService:
-    def __init__(self):
-        self.last_update = datetime.now()
-        self.update_interval = timedelta(hours=1)
-        self.batch_size = 1000
-        
-    async def start_update_loop(self):
-        while True:
-            try:
-                await self.check_and_update_models()
-                await asyncio.sleep(300)  # Check every 5 minutes
-            except Exception as e:
-                logger.error(f"Model update error: {e}")
-                await asyncio.sleep(600)  # Wait longer on error
-    
-    async def check_and_update_models(self):
-        if datetime.now() - self.last_update > self.update_interval:
-            logger.info("Starting model update...")
-            
-            # Get new interaction data
-            new_interactions = await self.get_new_interactions()
-            
-            if len(new_interactions) > self.batch_size:
-                # Retrain models with new data
-                await self.retrain_models(new_interactions)
-                self.last_update = datetime.now()
-                logger.info("Model update completed")
-    
-    async def retrain_models(self, new_data):
-        # Update collaborative filtering model
-        await self.update_collaborative_model(new_data)
-        
-        # Update content-based model if new books added
-        new_books = await self.get_new_books()
-        if new_books:
-            await self.update_content_model(new_books)
-        
-        # Update hybrid model weights based on performance
-        await self.optimize_hybrid_weights()
-```
-
-### Performance Monitoring
-
-**Model Performance Tracking**
-```python
-class ModelMonitor:
-    def __init__(self):
-        self.metrics = {
-            'precision_at_k': [],
-            'recall_at_k': [],
-            'ndcg': [],
-            'response_time': [],
-            'recommendation_diversity': []
-        }
-    
-    async def evaluate_recommendations(self, user_id, recommendations, actual_interactions):
-        # Calculate precision@k, recall@k, NDCG
-        precision_k = self.calculate_precision_at_k(recommendations, actual_interactions, k=10)
-        recall_k = self.calculate_recall_at_k(recommendations, actual_interactions, k=10)
-        ndcg = self.calculate_ndcg(recommendations, actual_interactions, k=10)
-        
-        # Track diversity
-        diversity = self.calculate_recommendation_diversity(recommendations)
-        
-        # Store metrics
-        self.metrics['precision_at_k'].append(precision_k)
-        self.metrics['recall_at_k'].append(recall_k)
-        self.metrics['ndcg'].append(ndcg)
-        self.metrics['recommendation_diversity'].append(diversity)
-        
-        # Send metrics to monitoring system
-        await self.send_metrics_to_monitoring()
-    
-    def calculate_precision_at_k(self, recommendations, actual, k):
-        recommended_k = recommendations[:k]
-        relevant = set(actual)
-        return len(set(recommended_k) & relevant) / k
-```
-
-**Integration:**
-This ML service integrates with the Back-End-Web and Front-End-Web projects to provide intelligent recipe book recommendations based on user preferences and behavior.
-
-## Architecture
-
-```
-Machine-Learning-Web/
-├── Ghibli-Food-ML/          # ML recommendation service
-│   ├── src/                 # Source code
-│   ├── api/                 # API endpoints
-│   ├── models/              # ML models
-│   ├── utils/               # Utilities
-│   ├── notebooks/           # Analysis notebooks
-│   └── config/              # Configuration
-└── README.md                # This file
-```
-
-## Getting Started
-
-1. Navigate to the specific project directory
-2. Follow the project-specific README instructions
-3. Ensure the main API (Back-End-Web) is running for data integration
-
-## Technologies Used
-
-- **Python 3.11+**
-- **FastAPI** - Web framework
-- **scikit-learn** - Machine learning library
-- **pandas & numpy** - Data processing
-- **PostgreSQL** - Database
-- **Docker** - Containerization
-- **Jupyter** - Data analysis
+---
 
 ## Contributing
 
-Each project has its own contribution guidelines. Please refer to the individual project README files for specific instructions.
+1. **Code Standards**
+   - Follow PEP 8 style guidelines
+   - Use type hints for all function parameters and returns
+   - Implement comprehensive docstrings with examples
+   - Maintain 90%+ test coverage for ML algorithms
+
+2. **ML Model Guidelines**
+   - Document algorithm choices and hyperparameters
+   - Include model performance benchmarks
+   - Implement proper cross-validation techniques
+   - Use reproducible random seeds
+
+3. **API Development**
+   - Follow FastAPI best practices
+   - Implement proper request validation with Pydantic
+   - Include comprehensive API documentation
+   - Handle errors gracefully with meaningful responses
+
+4. **Performance Requirements**
+   - Recommendation latency < 100ms for cached results
+   - Recommendation latency < 500ms for non-cached results
+   - Support for 1000+ concurrent users
+   - Model training should complete within 30 minutes
+
+---
+
+**Part of the Ghibli Food Recipe Platform Ecosystem** 🍜✨
