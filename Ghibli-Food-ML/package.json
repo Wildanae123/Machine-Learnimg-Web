@@ -1,0 +1,36 @@
+{
+  "name": "ghibli-food-ml",
+  "version": "1.0.0",
+  "description": "Machine Learning recommendation system for Ghibli Food Recipe application",
+  "main": "src/main.py",
+  "scripts": {
+    "start": "python src/main.py",
+    "dev": "python src/main.py",
+    "train": "python -c \"from src.models.recommendation_engine import GhibliFoodRecommendationEngine; from utils.data_fetcher import DataFetcher; import asyncio; engine = GhibliFoodRecommendationEngine(); data_fetcher = DataFetcher(); books, ratings = asyncio.run(data_fetcher.get_training_data()); engine.train_content_based_model(books); engine.train_collaborative_filtering_model(ratings); engine.save_models()\"",
+    "test": "python -m pytest tests/",
+    "docker:build": "docker build -t ghibli-food-ml .",
+    "docker:run": "docker run -p 8001:8001 ghibli-food-ml",
+    "docker:compose": "docker-compose up -d"
+  },
+  "keywords": [
+    "machine-learning",
+    "recommendation-system",
+    "food",
+    "recipe",
+    "ghibli",
+    "fastapi",
+    "python",
+    "collaborative-filtering",
+    "content-based-filtering"
+  ],
+  "author": "Your Name",
+  "license": "ISC",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/yourusername/ghibli-food-ml.git"
+  },
+  "bugs": {
+    "url": "https://github.com/yourusername/ghibli-food-ml/issues"
+  },
+  "homepage": "https://github.com/yourusername/ghibli-food-ml#readme"
+}

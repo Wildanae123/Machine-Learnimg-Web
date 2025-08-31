@@ -1,0 +1,51 @@
+version: '3.8'
+
+services:
+  ghibli-food-ml:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "8001:8001"
+    environment:
+      - HOST=0.0.0.0
+      - PORT=8001
+      - DEBUG=false
+      - MAIN_API_URL=http://ghibli-food-api:5000/api/v1
+      - POSTGRES_SERVER=postgres
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=password123
+      - POSTGRES_DB=ghibli_food_db
+      - POSTGRES_PORT=5432
+      - MODEL_PATH=/app/models/
+    volumes:
+      - ./models:/app/models
+      - ./data:/app/data
+      - ./logs:/app/logs
+    depends_on:
+      - postgres
+    restart: unless-stopped
+    networks:
+      - ghibli-network
+
+  postgres:
+    image: postgres:15-alpine
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=password123
+      - POSTGRES_DB=ghibli_food_db
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+      - ./init.sql:/docker-entrypoint-initdb.d/init.sql
+    ports:
+      - "5432:5432"
+    restart: unless-stopped
+    networks:
+      - ghibli-network
+
+volumes:
+  postgres_data:
+
+networks:
+  ghibli-network:
+    external: true
